@@ -1,0 +1,12 @@
+﻿@model PagingExtensionsWithScroll.Models.ProductsViewModel
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+<ul>
+@foreach(var product in Model.Products) {
+  <li>@product.Title - @product.Price.ToString()</li>
+}
+</ul>
+@Html.PageLinks(Model.TotalRecords, Model.PageSize, Model.Page, "active", 10, x => Url.Action("Index", "Home", new { page = x }))
